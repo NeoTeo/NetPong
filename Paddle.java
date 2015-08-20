@@ -48,11 +48,15 @@ public class Paddle implements Sprite,Networkable {
 	
 	public void move(int dir){
 		moved = true ;
-        System.out.println("Pre ypos is "+ypos) ;
-		if((dir == 1) && (ypos-paddleMovement > 0)) {
-             ypos -= paddleMovement ;
-		    System.out.println("Your ypos is "+ypos) ;
-        } else if(ypos < (scr_hei-paddleHeight)) ypos += paddleMovement ;	
+        
+		if (dir == 1) {
+            if (ypos-paddleMovement > 0) 
+                ypos -= paddleMovement ;
+        } else {
+            if(ypos < (scr_hei-paddleHeight)) 
+                ypos += paddleMovement ;	
+        }
+
 	}
 	
 	public void paint(Graphics g){
