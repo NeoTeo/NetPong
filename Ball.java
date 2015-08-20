@@ -3,6 +3,7 @@ import java.util.* ;
 
 public class Ball implements Sprite,Networkable {
 	public int xpos,oldxpos,ypos,oldypos,xspeed,yspeed ;
+    protected int minSpeed, speedRange;
 	protected Dimension screen ;
 	public boolean moved = false ;
 	
@@ -12,14 +13,28 @@ public class Ball implements Sprite,Networkable {
 		this.xspeed = xspeed ;
 		this.yspeed = yspeed ;
 		this.screen = screen ;
+        minSpeed = 5;
+        speedRange = 5;
 	}
 	
 	public void reset(){
 		Random rand = new Random(System.currentTimeMillis()) ;
 		xpos = screen.width/2 ;
 		ypos = screen.height/2 ;
-		xspeed = (rand.nextInt()%5)+5  ;
-		yspeed = (rand.nextInt()%5)+5  ;
+        // Randomize the x direction
+        int xDir = 1;
+        if (rand.nextInt() % 2 == 0) {
+            xDir = -1;
+        }
+
+        // Keep trying until the ratio is good.
+        float ratio;
+        do {
+            xspeed = xDir * ((rand.nextInt() % speedRange) + minSpeed) ;
+            yspeed = (rand.nextInt() % speedRange) + minSpeed  ;
+            ratio = Math.abs(xspeed/(float)yspeed);
+            System.out.println("speed ratio is "+ratio);
+        } while (ratio < 0.3);
 	}
 	
 	public Point getPos(){
