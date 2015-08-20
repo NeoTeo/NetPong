@@ -62,9 +62,14 @@ public class OkDialog extends Dialog implements ActionListener{
 	public NetData getData(){
 		NetData dat = new NetData() ;
 		dat.destport = port.getText() ;
+        if (dat.destport.isEmpty()) { dat.destport = "5000"; }
+		System.out.println("dat.destport is "+dat.destport) ;
 		dat.ipno = ipno.getText() ;
+        if (dat.ipno.isEmpty()) { dat.ipno = "127.0.0.1"; }
 		dat.players = players.getText() ;
+        if (dat.players.isEmpty()) { dat.players = "1"; }
 		dat.inport = inport.getText() ;
+        if (dat.inport.isEmpty()) { dat.inport = "6000"; }
 		return dat ;
 	}
 	

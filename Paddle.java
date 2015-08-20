@@ -2,8 +2,17 @@ import java.awt.* ;
 
 public class Paddle implements Sprite,Networkable {
 	protected int xpos,ypos,xoffset,scr_hei,scr_wid,oldxpos,oldypos,points,id_no,oppno  ;
+    protected int paddleHeight, paddleWidth;
+    protected int paddleMovement;
+
 	public boolean moved = false ;
 	public Paddle(int player_no){
+
+        paddleHeight = 70;
+        paddleWidth = 10;
+
+        paddleMovement = 6;
+
 		scr_hei = 400 ;
 		scr_wid = 640 ;
 		points = 0 ;
@@ -34,21 +43,24 @@ public class Paddle implements Sprite,Networkable {
 	}
 	
 	public Dimension getDim(){
-		return new Dimension(10,70) ;
+		return new Dimension(paddleWidth, paddleHeight) ;
 	}
 	
 	public void move(int dir){
 		moved = true ;
-		if((dir == 1) && (ypos > 0)) ypos -= 6 ;
-		else if(ypos < (scr_hei-70)) ypos += 6 ;	
+        System.out.println("Pre ypos is "+ypos) ;
+		if((dir == 1) && (ypos-paddleMovement > 0)) {
+             ypos -= paddleMovement ;
+		    System.out.println("Your ypos is "+ypos) ;
+        } else if(ypos < (scr_hei-paddleHeight)) ypos += paddleMovement ;	
 	}
 	
 	public void paint(Graphics g){
 		g.setColor(Color.white) ;
-		g.clearRect(oldxpos,oldypos,10,70) ;
+		g.clearRect(oldxpos,oldypos,paddleWidth, paddleHeight) ;
 		g.setColor(Color.black) ;
 		oldxpos = xpos+xoffset ;
-		g.fillRect(oldxpos,ypos,10,70) ;
+		g.fillRect(oldxpos,ypos,paddleWidth, paddleHeight) ;
 		oldypos = ypos ;
 	}
 }
