@@ -18,10 +18,10 @@ public class OkDialog extends Dialog implements ActionListener{
 		b = new Button("OK") ;
     b.addActionListener(this) ;
 
-		port = new TextField(4) ;		
-		ipno = new TextField(20) ;		
-		players = new TextField(2) ;
-		inport = new TextField(4) ;
+		port = new TextField("5000",4) ;		
+		ipno = new TextField("127.0.0.1",20) ;		
+		players = new TextField("1",2) ;
+		inport = new TextField("6000",4) ;
 		Label portlab = new Label("Opponents port :") ;
 		Label ipnolab = new Label("Opponents IP : ") ;
 		Label playerslab = new Label("Your player no : ") ;
