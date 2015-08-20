@@ -24,6 +24,9 @@ public class PongGame extends Thread {
 		img = f.createImage(640,400) ;
 		onscreen = f.getGraphics() ;	
 		offscreen = img.getGraphics() ;
+
+        int fontSize = 60;
+        offscreen.setFont(new Font("Helvetica", Font.BOLD, fontSize)); 
 	}
 	
 	public void run(){
@@ -37,11 +40,13 @@ public class PongGame extends Thread {
 			switch(ball.move()){
 				case 1:
 					opponent.addPoints(1) ;
+                    displayScore(offscreen, opponent.getPoints(),player.getPoints());
 					ball.reset() ;
 					System.out.println("Player 2 wins") ;
 					break ;
 				case 2 :
 					player.addPoints(1) ;
+                    displayScore(offscreen, opponent.getPoints(),player.getPoints());
 					ball.reset() ;
 					System.out.println("Player 1 wins") ;
 					break ;
@@ -64,6 +69,32 @@ public class PongGame extends Thread {
 		}
 	}
 	
+    void displayScore(Graphics g, int playerOneScore, int playerTwoScore) {
+        System.out.println("The score is:") ;
+        System.out.println("Player One: "+playerOneScore) ;
+        System.out.println("Player Two: "+playerTwoScore) ;
+
+        int scoreBoxSize = 60;
+
+        int scoreOneXPos = 400;
+        int scoreOneYPos = 70;
+
+        int scoreTwoXPos = 200;
+        int scoreTwoYPos = 70;
+        // Clear out previous score.
+		g.setColor(Color.white) ;
+        // Left side of the screen. We need to correct by a pixel because the drawString 
+        // dips below its given coordinate when it draws rounded glyphs.
+		g.fillRect(scoreTwoXPos,scoreTwoYPos-scoreBoxSize+1,scoreBoxSize*5,scoreBoxSize) ;
+        // Right side of the screen
+		g.fillRect(scoreOneXPos,scoreOneYPos-scoreBoxSize+1,scoreBoxSize*5,scoreBoxSize) ;
+
+		g.setColor(Color.black) ;
+        g.drawString(Integer.toString(playerTwoScore),scoreTwoXPos,scoreTwoYPos);
+        g.drawString(Integer.toString(playerOneScore),scoreOneXPos,scoreOneYPos);
+
+    }
+
 	void setPDU(PDU newpdu,int id){
 		if(id == oppno)opponent.setPDU(newpdu) ;
 		else if(id == playerno)player.setPDU(newpdu) ;

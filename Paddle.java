@@ -38,6 +38,10 @@ public class Paddle implements Sprite,Networkable {
 		points += p ;
 	}
 	
+	public int getPoints(){
+		return points;
+	}
+
 	public Point getPos(){
 		return new Point(xpos+xoffset,ypos) ;
 	}
