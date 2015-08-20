@@ -1,0 +1,1 @@
+public class NetData {	String destport ;	String ipno ;	String players ;	String inport ; }

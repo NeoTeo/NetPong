@@ -1,0 +1,44 @@
+;JBuilder -- PROJECT FILE VERSION {1.04} - do not alter this line!
+;--- main project settings
+[Project]
+Name=Pong.jpr
+DefaultDir=.
+ProjectHtml=
+UseJavaDefaults=0
+ClassPath=..\lib\jbcl.zip;..\lib\jgl.zip;..\java\lib\classes.zip
+SourcePath=..\PONG;..\myprojects;..\java\src.zip;..\src\jgl-src.zip;..\src\jbcl-src.zip
+OutPath=..\myclasses
+DefaultRunnable=.\pong.java
+DebugInfo=1
+CheckStable=0
+ShowWarnings=1
+ExcludeClass=
+Encoding=
+Parameters=
+JavaVMParameters=
+CompileFirst=1
+UseExecutionLog=0
+
+;--- Project contents
+[Contents]
+file:///.\Pong.html
+file:///.\udpsend.java
+file:///.\keygrab.java
+file:///.\netdata.java
+file:///.\paddle.java
+file:///.\pdu.java
+file:///.\pong.java
+file:///.\ponggame.java
+file:///.\udpreceive.java
+file:///.\ball.java
+file:///.\OkDialog.java
+file:///.\EchoServer.java
+
+[Params]
+Title=Your Product Name
+Author=Your Name
+Company=Your Company
+Copyright=Copyright (c) 1997
+Description=Your description
+
+;--- DONE
