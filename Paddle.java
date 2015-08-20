@@ -11,7 +11,7 @@ public class Paddle implements Sprite,Networkable {
         paddleHeight = 70;
         paddleWidth = 10;
 
-        paddleMovement = 6;
+        paddleMovement = 5;
 
 		scr_hei = 400 ;
 		scr_wid = 640 ;
@@ -50,7 +50,7 @@ public class Paddle implements Sprite,Networkable {
 		moved = true ;
         
 		if (dir == 1) {
-            if (ypos-paddleMovement > 0) 
+            if (ypos-paddleMovement >= 0) 
                 ypos -= paddleMovement ;
         } else {
             if(ypos < (scr_hei-paddleHeight)) 
